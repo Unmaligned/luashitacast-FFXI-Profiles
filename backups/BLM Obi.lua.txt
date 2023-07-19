@@ -1,0 +1,61 @@
+local profile = {};
+local sets = {
+};
+
+local ObiTable = {
+    ['Fire'] = 'Karin Obi',
+    ['Earth'] = 'Dorin Obi',
+    ['Water'] = 'Suirin Obi',
+    ['Wind'] = 'Furin Obi',
+    ['Ice'] = 'Hyorin Obi',
+    ['Thunder'] = 'Rairin Obi',
+    ['Light'] = 'Korin Obi',
+    ['Dark'] = 'Anrin Obi'
+};
+
+profile.Sets = sets;
+
+profile.Packer = {
+};
+
+profile.OnLoad = function()
+    gSettings.AllowAddSet = true;
+end
+
+profile.OnUnload = function()
+end
+
+profile.HandleCommand = function(args)
+end
+
+profile.HandleDefault = function()
+end
+
+profile.HandleAbility = function()
+end
+
+profile.HandleItem = function()
+end
+
+profile.HandlePrecast = function()
+end
+
+profile.HandleMidcast = function()
+    local spell = gData.GetAction();
+    local environment = gData.GetEnvironment();
+if (spell.Element == environment.WeatherElement) then
+    gFunc.Equip('waist', ObiTable[environment.WeatherElement]);
+elseif (spell.Element == environment.DayElement) or 
+    gFunc.Equip('waist', ObiTable[environment.DayElement]);
+end
+
+profile.HandlePreshot = function()
+end
+
+profile.HandleMidshot = function()
+end
+
+profile.HandleWeaponskill = function()
+end
+
+return profile;
