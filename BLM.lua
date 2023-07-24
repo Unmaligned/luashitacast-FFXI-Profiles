@@ -13,7 +13,7 @@ local sets = {
         Ring2 = 'Genius Ring',
         Back = 'Black Cape +1',
         Waist = 'Penitent\'s Rope',
-        Legs = 'Druid\'s Slops',
+        Legs = 'Mahatma Slops',
         Feet = 'Mountain Gaiters',
     },
     ['Resting'] = {
@@ -55,7 +55,7 @@ local sets = {
         Ring2 = 'Genius Ring',
         Back = 'Black Cape +1',
         Waist = 'Penitent\'s Rope',
-        Legs = 'Druid\'s Slops',
+        Legs = 'Mahatma Slops',
         Feet = 'Mountain Gaiters',
     },
     ['CAST_PARTY'] = {
@@ -72,7 +72,7 @@ local sets = {
         Ring2 = 'Genius Ring',
         Back = 'Black Cape +1',
         Waist = 'Penitent\'s Rope',
-        Legs = 'Druid\'s Slops',
+        Legs = 'Mahatma Slops',
         Feet = 'Mountain Gaiters',
     },
 };
