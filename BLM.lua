@@ -19,6 +19,7 @@ local sets = {
     ['Resting'] = {
         Body = 'Royal Cloak',
         Legs = 'Baron\'s Slops',
+        Waist = 'Hierarch Belt',
     },
     ['Enfeeb'] = {
 	Head = 'Wizard\'s Petasos',
