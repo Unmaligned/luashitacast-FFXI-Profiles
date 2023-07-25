@@ -27,7 +27,7 @@ local sets = {
         Body = 'Wizard\'s Coat',
     },
     ['Nuke'] = {
-	    Head = 'Wizard\'s Petasos',
+	    Head = 'Demon Helm',
         Body = 'Igqira Weskit',
     },
     ['Dark'] = {
