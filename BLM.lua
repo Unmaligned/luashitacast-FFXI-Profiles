@@ -34,7 +34,9 @@ local sets = {
         Legs = 'Wizard\'s Tonban',
     },
     ['Town'] = {
-        Body = 'Royal Cloak',
+ --       Body = 'Royal Cloak',
+ 		Head = 'Wizard\'s Petasos',
+        Body = 'Igqira Weskit',
     },
     ['Sandy'] = {
         Head = 'Wizard\'s Petasos',
