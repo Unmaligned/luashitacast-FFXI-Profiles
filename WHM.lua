@@ -14,7 +14,7 @@ local sets = {
         Waist = 'Penitent\'s Rope',
         Legs = 'Blessed Trousers',
         Feet = 'Blessed Pumps',
-        Back = 'White Cape +1',
+        Back = 'Rainbow Cape',
     },
     Resting = {
 	Main = 'Pluto\'s Staff',
