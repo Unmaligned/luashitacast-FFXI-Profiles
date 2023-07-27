@@ -18,6 +18,7 @@ local sets = {
     },
     Resting = {
 	Main = 'Pluto\'s Staff',
+        Body = 'Errant Houppelande',
         Legs = 'Baron\'s Slops',
         Waist = 'Hierarch Belt',
     },
