@@ -18,7 +18,7 @@ local sets = {
         Feet = 'Mountain Gaiters',
     },
     ['Resting'] = {
-        Body = 'Errant Houppelande',
+        Body = 'Errant Hpl.',
         Legs = 'Baron\'s Slops',
         Waist = 'Hierarch Belt',
     },
