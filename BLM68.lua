@@ -4,7 +4,6 @@ local sets = {
     ['Idle'] = {
         Main = 'Pluto\'s Staff',
         Ammo = 'Phtm. Tathlum',
---        Neck = 'Black Neckerchief',
         Neck = 'Elemental Torque',
         Ear1 = 'Morion Earring +1',
         Ear2 = 'Moldavite Earring',
@@ -21,11 +20,11 @@ local sets = {
         Legs = 'Baron\'s Slops',
     },
     ['Enfeeb'] = {
-	Head = 'Wizard\'s Petasos',
+	    Head = 'Wizard\'s Petasos',
         Body = 'Wizard\'s Coat',
     },
     ['Nuke'] = {
-        Body = 'Shaman\'s Cloak',
+        Body = 'Black Cloak',
     },
     ['Dark'] = {
         Legs = 'Wizard\'s Tonban',
@@ -42,7 +41,7 @@ local sets = {
         Body = 'Royal Cloak',
     },
     ['CAST_SOLO'] = {
-        Body = 'Shaman\'s Cloak',
+        Body = 'Black Cloak',
         Main = 'Pluto\'s Staff',
         Ammo = 'Phtm. Tathlum',
         Neck = 'Black Neckerchief',
