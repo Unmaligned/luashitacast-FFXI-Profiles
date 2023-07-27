@@ -19,6 +19,7 @@ local sets = {
     Resting = {
 	Main = 'Pluto\'s Staff',
         Legs = 'Baron\'s Slops',
+        Waist = 'Hierarch Belt',
     },
 
     Casting = {
