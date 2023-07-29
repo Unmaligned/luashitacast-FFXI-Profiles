@@ -15,7 +15,7 @@ local sets = {
         Back = 'Rainbow Cape',
         Waist = 'Penitent\'s Rope',
         Legs = 'Mahatma Slops',
-        Feet = 'Mountain Gaiters',
+        Feet = 'Rostrum Pumps',
     },
     ['Resting'] = {
         Body = 'Errant Hpl.',
@@ -60,7 +60,7 @@ local sets = {
         Back = 'Rainbow Cape',
         Waist = 'Penitent\'s Rope',
         Legs = 'Mahatma Slops',
-        Feet = 'Mountain Gaiters',
+        Feet = 'Rostrum Pumps',
     },
     ['CAST_PARTY'] = {
         Head = 'Wizard\'s Petasos',
@@ -76,7 +76,7 @@ local sets = {
         Back = 'Rainbow Cape',
         Waist = 'Penitent\'s Rope',
         Legs = 'Mahatma Slops',
-        Feet = 'Mountain Gaiters',
+        Feet = 'Rostrum Pumps',
     },
 };
 
