@@ -49,6 +49,7 @@ local sets = {
     ['CAST_SOLO'] = {
 
         Body = 'Igqira Weskit',
+	Head = 'Wizard\'s Petasos',
         Main = 'Pluto\'s Staff',
         Ammo = 'Phtm. Tathlum',
         Neck = 'Elemental Torque',
