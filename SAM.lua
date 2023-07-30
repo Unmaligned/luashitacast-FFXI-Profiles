@@ -33,6 +33,16 @@ profile.HandleCommand = function(args)
 end
 
 profile.HandleDefault = function()
+    -- Grab the player info
+	local player = gData.GetPlayer();
+        local zone = gData.GetEnvironment('Area');
+
+          gFunc.EquipSet(sets.Idle);
+
+
+    if (zone.Area == 'Port San d\'Oria') or (zone.Area == 'Southern San d\'Oria') or (zone.Area == 'Northern San d\'Oria') or (zone.Area == 'Chateau*') then
+        gFunc.Equip('Body', 'Kingdom Aketon');
+    end
 end
 
 profile.HandleAbility = function()
