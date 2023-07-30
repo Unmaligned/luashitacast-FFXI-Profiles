@@ -1,19 +1,19 @@
 local profile = {};
 local sets = {
     ['Idle'] = {
-        Main = 'Nodachi',
+        Main = 'Gunromaru',
         Ammo = 'Happy Egg',
-        Head = 'Ryl.Ftm. Bandana',
-        Neck = 'Justice Badge',
+        Head = 'Mrc. Hachimaki',
+        Neck = 'Spike Necklace',
         Ear1 = 'Cassie Earring',
-        Ear2 = 'Optical Earring',
-        Body = 'Lgn. Harness',
-        Hands = 'Ryl.Ftm. Gloves',
+        Ear2 = 'Beetle Earring +1',
+        Body = 'Beetle Harness',
+        Hands = 'Mrc. Tekko',
         Ring1 = 'Courage Ring',
         Ring2 = 'Courage Ring',
         Back = 'Rabbit Mantle',
         Waist = 'Warrior\'s Belt +1',
-        Legs = 'Bone Subligar',
+        Legs = 'Ryl.Ftm. Trousers',
         Feet = 'Bounding Boots',
     },
 };
