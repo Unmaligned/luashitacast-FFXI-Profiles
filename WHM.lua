@@ -52,7 +52,10 @@ profile.HandleCommand = function(args)
 end
 
 profile.HandleDefault = function()
-    local player = gData.GetPlayer();
+    -- Grab the player info
+	local player = gData.GetPlayer();
+        local zone = gData.GetEnvironment('Area');
+
     gFunc.EquipSet(sets.Idle);
 
     if (player.Status == 'Resting') then
