@@ -58,6 +58,10 @@ profile.HandleDefault = function()
     if (player.Status == 'Resting') then
         gFunc.EquipSet(sets.Resting);
     end
+
+    if (zone.Area == 'Port San d\'Oria') or (zone.Area == 'Southern San d\'Oria') or (zone.Area == 'Northern San d\'Oria') or (zone.Area == 'Chateau*') then
+        gFunc.Equip('Body', 'Kingdom Aketon');
+    end
 end
 
 profile.HandleAbility = function()
