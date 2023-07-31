@@ -46,6 +46,14 @@ local sets = {
         Head = '',
         Body = 'Royal Cloak',
     },
+    ['Fish'] = {
+        Body = 'Fsh. Tunica',
+        Hands = 'Fsh. Gloves',
+        Legs = 'Fisherman\'s Hose',
+        Feet = 'Fisherman\'s Boots',
+        Range = 'Halcyon Rod',
+        Ammo = 'Minnow',
+    },
     ['CAST_SOLO'] = {
 
         Body = 'Igqira Weskit',
@@ -149,6 +157,7 @@ local CastingVariantTable = {
 local Settings = {
     CastingVariant = 1,
     IsRefreshOn = false,
+    IsFishOn = false,
 };
 
 profile.OnLoad = function()
@@ -165,6 +174,7 @@ profile.OnLoad = function()
     -- Register keybinds
     AshitaCore:GetChatManager():QueueCommand(-1, '/bind F9 /lac fwd castingset');
     AshitaCore:GetChatManager():QueueCommand(-1, '/bind F10 /lac fwd refresh');
+    AshitaCore:GetChatManager():QueueCommand(-1, '/bind F12 /lac fwd fish');
 
     -- Output which set is currently enabled
     gFunc.Message('Casting Mode: ' .. CastingVariantTable[Settings.CastingVariant]); 
@@ -203,6 +213,20 @@ profile.HandleCommand = function(args)
         end
 
     end
+
+    -- Catch the "fish" command
+    if (args[1] == "fish") then
+
+        -- Check if the fish set is currently on
+        if (Settings.IsFishOn == true) then
+            Settings.IsFishOn = false;
+            gFunc.Message('Fish Set: OFF');    
+        else
+            Settings.IsFishOn = true;
+            gFunc.Message('Fish Set: ON');    
+        end
+
+    end
 end
 
 profile.HandleDefault = function()
@@ -220,6 +244,11 @@ profile.HandleDefault = function()
     -- Override with the refresh set
     if (Settings.IsRefreshOn == true) then
         gFunc.EquipSet(profile.Sets.Refresh);
+    end
+
+    -- Override with the fish set
+    if (Settings.IsFishOn == true) then
+        gFunc.EquipSet(profile.Sets.Fish);
     end
 
     if (Zone.Sandy[zone.Area]) then
