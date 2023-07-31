@@ -1,7 +1,7 @@
 local profile = {};
 local sets = {
     ['Idle'] = {
-        Main = 'Gunromaru',
+        Main = 'Okanehira',
         Ammo = 'Happy Egg',
         Head = 'Mrc. Hachimaki',
         Neck = 'Spike Necklace',
