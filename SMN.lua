@@ -26,34 +26,20 @@ local sets = {
     },
 };
 local ElementalStaffTable = {
-    ['Fire'] = 'Aquilo\'s Staff',
-    ['Earth'] = 'Aquilo\'s Staff',
-    ['Water'] = 'Aquilo\'s Staff',
+    ['Fire'] = 'Fire Staff',
+    ['Earth'] = 'Earth Staff',
+    ['Water'] = 'Water Staff',
     ['Wind'] = 'Auster\'s Staff',
     ['Ice'] = 'Aquilo\'s Staff',
-    ['Thunder'] = 'Aquilo\'s Staff',
-    ['Light'] = 'Appollo\'s Staff',
+    ['Thunder'] = 'Thunder Staff',
+    ['Light'] = 'Apollo\'s Staff',
     ['Dark'] = 'Pluto\'s Staff'
 };
+
 profile.Sets = sets;
 
 profile.Packer = {
 };
--- Pet tables(s)
-local Pet = {};
-
--- Summon pets
-Pet.Summon = {
-    ['Carbuncle'] = 'Light',
-    ['Diabolos'] = 'Dark',
-    ['Fenrir'] = 'Dark',
-    ['Garuda'] = 'Wind',
-    ['Titan'] = 'Earth',
-    ['Ifrit'] = 'Fire',
-    ['Shiva'] = 'Ice',
-    ['Ramuh'] = 'Thunder',
-    ['Leviathan'] = 'Water',
-}
     
 -- Zone table(s)
 local Zone = {};
@@ -86,7 +72,6 @@ Zone.City = {
 -- Global settings
 -----------------------------------------------
 local Settings = {
-    CastingVariant = 1,
     IsRefreshOn = false,
     IsFishOn = false,
 };
@@ -115,7 +100,7 @@ end
 profile.HandleDefault = function()
     local player = gData.GetPlayer();
     local zone = gData.GetEnvironment('Area');
-    local pet = gData.GetPet('Name')
+    local pet = gData.GetPet('Name');
 
     if (player.Status == 'Resting') then
         gFunc.EquipSet(sets.Resting);
@@ -137,12 +122,27 @@ profile.HandleDefault = function()
 	gFunc.EquipSet(sets.Town);
     end
 
-    if (pet.Name ~= nil) then
-	gFunc.EquipSet(sets.Idle);
-    elseif (Pet.Summon[pet.Name]) then
-	gFunc.Equip('main', ElementalStaffTable[Pet.Summon]);
+    if (pet == nil) then
+	gFunc.EquipSet(profile.Sets.Idle);
+    else
+        if (pet.Name == 'Diabolos') or (petName == 'Fenrir') then
+            gFunc.Equip('Main', 'Pluto\'s Staff');
+        elseif (pet.Name == 'Carbuncle') then
+            gFunc.Equip('Main', 'Apollo\'s Staff');
+        elseif (pet.Name == 'Garuda') then
+            gFunc.Equip('Main', 'Auster\'s Staff');
+        elseif (pet.Name == 'Titan') then
+            gFunc.Equip('Main', 'Earth Staff');
+        elseif (pet.Name == 'Ifrit') then
+            gFunc.Equip('Main', 'Fire Staff');
+        elseif (pet.Name == 'Shiva') then
+            gFunc.Equip('Main', 'Aquilo\'s Staff');
+        elseif (pet.Name == 'Ramuh') then
+            gFunc.Equip('Main', 'Thunder Staff');
+        elseif (pet.Name == 'Leviathan') then
+            gFunc.Equip('Main', 'Water Staff');
+        end
     end
-
 end
 
 profile.HandleAbility = function()
