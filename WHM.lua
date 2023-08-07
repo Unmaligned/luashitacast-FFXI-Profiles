@@ -73,6 +73,13 @@ local sets = {
     Cure = {
 	Feet = 'Cure Clogs',
     },
+    ['Choco'] = {
+        Head = 'Healer\'s Cap',
+        Body = 'Choc. Jack Coat',
+        Hands = 'Chocobo Gloves',
+        Legs = 'Chocobo Hose',
+        Feet = 'Chocobo Boots',
+    },
 };
 profile.Sets = sets;
 
@@ -80,18 +87,70 @@ profile.Packer = {
     
 };
 
+-- Zone table(s)
+local Zone = {};
+
+-- San d'Oria Zones
+Zone.Sandy = {
+    ['Port San d\'Oria'] = true,
+    ['Southern San d\'Oria'] = true,
+    ['Northern San d\'Oria'] = true,
+    ['Chateau d\'Oraguille'] = true,
+}
+
+Zone.City = {
+    ['Port Jeuno'] = true,
+    ['Port Bastok'] = true,
+    ['Lower Jeuno'] = true,
+    ['Upper Jeuno'] = true,
+    ['Ru\'Lude Gardens'] = true,
+    ['*Whitegate'] = true,
+    ['Nashmau'] = true,
+    ['Bastok*'] = true,
+    ['Metalworks'] = true,
+    ['Windurst*'] = true,
+    ['Heavens*'] = true,
+    ['Kazham'] = true,
+    ['Norg'] = true,
+    ['Rabao'] = true,
+}
+
+-----------------------------------------------
+-- Global settings
+-----------------------------------------------
+local Settings = {
+    IsChocoOn = false,
+};
+
 profile.OnLoad = function()
 	gSettings.AllowAddSet = true;
 
     AshitaCore:GetChatManager():QueueCommand(1, '/macro book 2');
     AshitaCore:GetChatManager():QueueCommand(1, '/macro set 1');
+
+    -- Register keybinds
+    AshitaCore:GetChatManager():QueueCommand(-1, '/bind F9 /lac fwd choco');
 end
 
 profile.OnUnload = function()
 end
 
 profile.HandleCommand = function(args)
-    gcinclude.HandleCommands(args);
+
+
+    -- Catch the "choco" command
+    if (args[1] == "choco") then
+
+        -- Check if the choco set is currently on
+        if (Settings.IsChocoOn == true) then
+            Settings.IsChocoOn = false;
+            gFunc.Message('Choco Set: OFF');    
+        else
+            Settings.IsChocoOn = true;
+            gFunc.Message('Choco Set: ON');    
+        end
+    end
+
 end
 
 profile.HandleDefault = function()
@@ -117,8 +176,15 @@ profile.HandleDefault = function()
     	end
     end
 
-    if (zone.Area == 'Port San d\'Oria') or (zone.Area == 'Southern San d\'Oria') or (zone.Area == 'Northern San d\'Oria') or (zone.Area == 'Chateau*') then
-        gFunc.Equip('Body', 'Kingdom Aketon');
+    -- Override with the fish set
+    if (Settings.IsChocoOn == true) then
+        gFunc.EquipSet(profile.Sets.Choco);
+    end
+
+    if (Zone.Sandy[zone.Area]) then
+	gFunc.EquipSet(sets.Sandy);
+    elseif (Zone.City[zone.Area]) then
+	gFunc.EquipSet(sets.Town);
     end
 end
 
