@@ -74,7 +74,7 @@ local sets = {
 	Feet = 'Cure Clogs',
     },
     ['Choco'] = {
-        Head = 'Healer\'s Cap',
+        Head = 'Cleric\'s Cap',
         Body = 'Choc. Jack Coat',
         Hands = 'Chocobo Gloves',
         Legs = 'Chocobo Hose',
