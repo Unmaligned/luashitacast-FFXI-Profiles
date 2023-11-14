@@ -4,8 +4,8 @@ local sets = {
     ['Idle75'] = {
         Main = 'Pluto\'s Staff',
         Ammo = 'Phtm. Tathlum',
-	Head = 'Wizard\'s Petasos',
-        Body = 'Igqira Weskit',
+	Head = 'Src. Petasos +1',
+        Body = 'Sorcerer\'s Coat',
         Neck = 'Elemental Torque',
         Ear1 = 'Morion Earring +1',
         Ear2 = 'Moldavite Earring',
@@ -13,7 +13,7 @@ local sets = {
         Ring1 = 'Snow Ring',
         Ring2 = 'Snow Ring',
         Back = 'Rainbow Cape',
-        Waist = 'Penitent\'s Rope',
+        Waist = 'Sorcerer\'s Belt',
         Legs = 'Mahatma Slops',
         Feet = 'Rostrum Pumps',
     },
@@ -45,6 +45,21 @@ local sets = {
         Legs = 'Druid\'s Slops',
         Feet = 'Mountain Gaiters',
     },
+    ['Idle60'] = {
+        Main = 'Pluto\'s Staff',
+        Ammo = 'Morion Tathlum',
+        Body = 'Shaman\'s Cloak',
+        Neck = 'Black Neckerchief',
+        Ear1 = 'Morion Earring +1',
+        Ear2 = 'Moldavite Earring',
+        Hands = 'Wizard\'s Gloves',
+        Ring1 = 'Genius Ring',
+        Ring2 = 'Genius Ring',
+        Back = 'Black Cape +1',
+        Waist = 'Penitent\'s Rope',
+        Legs = 'Seer\'s Slacks',
+        Feet = 'Mountain Gaiters',
+    },
     ['Idle50'] = {
         Main = 'Rose Wand +1',
 	Sub = 'Yew Wand +1',
@@ -61,6 +76,22 @@ local sets = {
         Waist = 'Friar\'s Rope',
         Legs = 'Seer\'s Slacks',
         Feet = 'Mountain Gaiters',
+    },
+    ['Idle20'] = {
+        Main = 'Yew Wand +1',
+        Ammo = 'Fortune Egg',
+        Head = 'Silver Hairpin +1',
+        Neck = 'Black Neckerchief',
+        Ear1 = 'Energy Earring',
+        Ear2 = 'Energy Earring',
+        Body = 'Trader\'s Saio',
+        Hands = 'Chocobo Gloves',
+        Ring1 = 'Tranquility Ring',
+        Ring2 = 'Tranquility Ring',
+        Back = 'Cape',
+        Waist = 'Friar\'s Rope',
+        Legs = 'Baron\'s Slops',
+        Feet = 'Mage\'s Sandals',
     },
     ['Resting75'] = {
         Body = 'Errant Hpl.',
@@ -86,6 +117,7 @@ local sets = {
     ['Nuke75'] = {
 	Head = 'Demon Helm',
         Body = 'Igqira Weskit',
+        Feet = 'Sorcerer\'s Sabots',
     },
     ['Nuke68'] = {
         Body = 'Black Cloak',
@@ -93,20 +125,23 @@ local sets = {
     ['Nuke67'] = {
         Body = 'Shaman\'s Cloak',
     },
+    ['Nuke60'] = {
+        Body = 'Shaman\'s Cloak',
+    },
     ['Dark'] = {
         Legs = 'Wizard\'s Tonban',
     },
     ['Town'] = {
- 	Head = 'Wizard\'s Petasos',
-        Body = 'Igqira Weskit',
+ 	Head = 'Src. Petasos +1',
+        Body = 'Sorcerer\'s Coat',
     },
     ['Sandy'] = {
-        Head = 'Wizard\'s Petasos',
+        Head = 'Src. Petasos +1',
         Body = 'Kingdom Aketon',
     },
     ['Refresh'] = {
         Head = '',
-        Body = 'Royal Cloak',
+        Body = 'Black Cloak',
     },
     ['Fish'] = {
         Body = 'Fsh. Tunica',
@@ -115,101 +150,6 @@ local sets = {
         Feet = 'Fisherman\'s Boots',
         Range = 'Halcyon Rod',
         Ammo = 'Minnow',
-    },
-    ['CAST_SOLO75'] = {
-
-        Body = 'Igqira Weskit',
-	Head = 'Wizard\'s Petasos',
-        Main = 'Pluto\'s Staff',
-        Ammo = 'Phtm. Tathlum',
-        Neck = 'Elemental Torque',
-        Ear1 = 'Morion Earring +1',
-        Ear2 = 'Moldavite Earring',
-        Hands = 'Wizard\'s Gloves',
-        Ring1 = 'Snow Ring',
-        Ring2 = 'Snow Ring',
-        Back = 'Rainbow Cape',
-        Waist = 'Penitent\'s Rope',
-        Legs = 'Mahatma Slops',
-        Feet = 'Rostrum Pumps',
-    },
-    ['CAST_PARTY75'] = {
-        Head = 'Wizard\'s Petasos',
-        Body = 'Igqira Weskit',
-        Neck = 'Black Neckerchief',
-        Main = 'Pluto\'s Staff',
-        Ammo = 'Phtm. Tathlum',
-        Ear1 = 'Morion Earring +1',
-        Ear2 = 'Moldavite Earring',
-        Hands = 'Wizard\'s Gloves',
-        Ring1 = 'Snow Ring',
-        Ring2 = 'Snow Ring',
-        Back = 'Rainbow Cape',
-        Waist = 'Penitent\'s Rope',
-        Legs = 'Mahatma Slops',
-        Feet = 'Rostrum Pumps',
-    },
-    ['CAST_SOLO68'] = {
-        Body = 'Black Cloak',
-        Main = 'Pluto\'s Staff',
-        Ammo = 'Phtm. Tathlum',
-        Neck = 'Black Neckerchief',
-        Ear1 = 'Morion Earring +1',
-        Ear2 = 'Moldavite Earring',
-        Hands = 'Wizard\'s Gloves',
-        Ring1 = 'Genius Ring',
-        Ring2 = 'Genius Ring',
-        Back = 'Black Cape +1',
-        Waist = 'Penitent\'s Rope',
-        Legs = 'Druid\'s Slops',
-        Feet = 'Mountain Gaiters',
-    },
-    ['CAST_PARTY68'] = {
-	Head = 'Wizard\'s Petasos',
-        Body = 'Wizard\'s Coat',
-        Neck = 'Black Neckerchief',
-        Main = 'Pluto\'s Staff',
-        Ammo = 'Phtm. Tathlum',
-        Ear1 = 'Morion Earring +1',
-        Ear2 = 'Moldavite Earring',
-        Hands = 'Wizard\'s Gloves',
-        Ring1 = 'Genius Ring',
-        Ring2 = 'Genius Ring',
-        Back = 'Black Cape +1',
-        Waist = 'Penitent\'s Rope',
-        Legs = 'Druid\'s Slops',
-        Feet = 'Mountain Gaiters',
-    },
-    ['CAST_SOLO67'] = {
-        Body = 'Shaman\'s Cloak',
-        Main = 'Pluto\'s Staff',
-        Ammo = 'Phtm. Tathlum',
-        Neck = 'Black Neckerchief',
-        Ear1 = 'Morion Earring +1',
-        Ear2 = 'Moldavite Earring',
-        Hands = 'Wizard\'s Gloves',
-        Ring1 = 'Genius Ring',
-        Ring2 = 'Genius Ring',
-        Back = 'Black Cape +1',
-        Waist = 'Penitent\'s Rope',
-        Legs = 'Druid\'s Slops',
-        Feet = 'Mountain Gaiters',
-    },
-    ['CAST_PARTY67'] = {
-	Head = 'Wizard\'s Petasos',
-        Body = 'Wizard\'s Coat',
-        Neck = 'Black Neckerchief',
-        Main = 'Pluto\'s Staff',
-        Ammo = 'Phtm. Tathlum',
-        Ear1 = 'Morion Earring +1',
-        Ear2 = 'Moldavite Earring',
-        Hands = 'Wizard\'s Gloves',
-        Ring1 = 'Genius Ring',
-        Ring2 = 'Genius Ring',
-        Back = 'Black Cape +1',
-        Waist = 'Penitent\'s Rope',
-        Legs = 'Druid\'s Slops',
-        Feet = 'Mountain Gaiters',
     },
 };
 
@@ -227,11 +167,11 @@ local ObiTable = {
 local ElementalStaffTable = {
     ['Fire'] = 'Aquilo\'s Staff',
     ['Earth'] = 'Aquilo\'s Staff',
-    ['Water'] = 'Aquilo\'s Staff',
+    ['Water'] = 'Neptune\'s Staff',
     ['Wind'] = 'Auster\'s Staff',
     ['Ice'] = 'Aquilo\'s Staff',
-    ['Thunder'] = 'Aquilo\'s Staff',
-    ['Light'] = 'Appollo\'s Staff',
+    ['Thunder'] = 'Jupiter\'s Staff',
+    ['Light'] = 'Apollo\'s Staff',
     ['Dark'] = 'Pluto\'s Staff'
 };
 profile.Sets = sets;
@@ -268,22 +208,9 @@ Zone.City = {
 }
 
 -----------------------------------------------
--- Casting modes
------------------------------------------------
-local CastingVariantTable = {
-    [1] = 'Solo75',
-    [2] = 'Party75',
-    [3] = 'Solo68',
-    [4] = 'Party68',
-    [5] = 'Solo67',
-    [6] = 'Party67',
-}
-
------------------------------------------------
 -- Global settings
 -----------------------------------------------
 local Settings = {
-    CastingVariant = 1,
     IsRefreshOn = false,
     IsFishOn = false,
 };
@@ -300,33 +227,15 @@ profile.OnLoad = function()
     AshitaCore:GetChatManager():QueueCommand(1, '/macro set 1');
 
     -- Register keybinds
-    AshitaCore:GetChatManager():QueueCommand(-1, '/bind F9 /lac fwd castingset');
     AshitaCore:GetChatManager():QueueCommand(-1, '/bind F10 /lac fwd refresh');
-    AshitaCore:GetChatManager():QueueCommand(-1, '/bind F12 /lac fwd fish');
+    AshitaCore:GetChatManager():QueueCommand(-1, '/bind F9 /lac fwd fish');
 
-    -- Output which set is currently enabled
-    gFunc.Message('Casting Mode: ' .. CastingVariantTable[Settings.CastingVariant]); 
 end
 
 profile.OnUnload = function()
 end
 
 profile.HandleCommand = function(args)
-    -- Catch the "castingset" command
-    if (args[1] == "castingset") then
-
-        -- Increment the Casting mode index
-        Settings.CastingVariant = Settings.CastingVariant + 1;
-
-        -- Reset the melee mode index if it's out of bounds
-        if (Settings.CastingVariant > #CastingVariantTable) then
-            Settings.CastingVariant = 1;
-        end
-
-        -- Output which set is currently enabled
-        gFunc.Message('Casting Set: ' .. CastingVariantTable[Settings.CastingVariant]);    
-
-    end
 
     -- Catch the "refresh" command
     if (args[1] == "refresh") then
@@ -362,34 +271,40 @@ profile.HandleDefault = function()
     local sync = gData.GetPlayer(MainJobSync);
     local zone = gData.GetEnvironment('Area');
 
+
     if (sync.MainJobSync == 75) then
-    	gFunc.EquipSet(sets.Idle75);
-    	if (player.Status == 'Resting') then
-        	gFunc.EquipSet(sets.Resting75);
-    	end
-    elseif (sync.MainJobSync >= 68) and (sync.MainJobSync <= 74) then
+   	gFunc.EquipSet(sets.Idle75);
+   	if (player.Status == 'Resting') then
+	       	gFunc.EquipSet(sets.Resting75);
+   	end
+    elseif -(sync.MainJobSync >= 68) and (sync.MainJobSync <= 74) then
     	gFunc.EquipSet(sets.Idle68);
     	if (player.Status == 'Resting') then
         	gFunc.EquipSet(sets.Resting68);
     	end
-    elseif (sync.MainJobSync >= 67) and (sync.MainJobSync <= 74) then
-    	gFunc.EquipSet(sets.Idle67);
-    	if (player.Status == 'Resting') then
-        	gFunc.EquipSet(sets.Resting67);
-    	end
-    elseif (sync.MainJobSync >= 65) and (sync.MainJobSync <= 66) then
-    	gFunc.EquipSet(sets.Idle65);
-    	if (player.Status == 'Resting') then
-        	gFunc.EquipSet(sets.Resting65);
-    	end
-    elseif (sync.MainJobSync == 50) then
-    	gFunc.EquipSet(sets.Idle50);
-    	if (player.Status == 'Resting') then
-        	gFunc.EquipSet(sets.Resting50);
-    	end
-    end
-
-    gFunc.EquipSet('CAST_' .. CastingVariantTable[Settings.CastingVariant]);
+   elseif (sync.MainJobSync == 67) then
+   	gFunc.EquipSet(sets.Idle67);
+   	if (player.Status == 'Resting') then
+       	gFunc.EquipSet(sets.Resting67);
+   	end
+   elseif (sync.MainJobSync >= 65) and (sync.MainJobSync <= 66) then
+   	gFunc.EquipSet(sets.Idle65);
+   	if (player.Status == 'Resting') then
+	       	gFunc.EquipSet(sets.Resting65);
+   	end
+   elseif (sync.MainJobSync == 60) then
+   	gFunc.EquipSet(sets.Idle60);
+   	if (player.Status == 'Resting') then
+		gFunc.EquipSet(sets.Resting50);
+   	end
+   elseif (sync.MainJobSync == 50) then
+   	gFunc.EquipSet(sets.Idle50);
+   	if (player.Status == 'Resting') then
+       		gFunc.EquipSet(sets.Resting50);
+   	end
+   elseif (sync.MainJobSync == 20) then
+   	gFunc.EquipSet(sets.Idle20);
+   end
 
     -- Override with the refresh set
     if (Settings.IsRefreshOn == true) then
@@ -475,6 +390,20 @@ profile.HandleMidcast = function()
 	     gFunc.Equip('main', ElementalStaffTable[spell.Element]);
   	 elseif (spell.Skill == 'Elemental Magic') then
    	     gFunc.EquipSet(sets.Nuke65);
+	     gFunc.Equip('main', ElementalStaffTable[spell.Element]);
+  	 elseif (spell.Skill == 'Enfeebling Magic') then
+  	     gFunc.EquipSet(sets.Enfeeb);
+	     gFunc.Equip('main', ElementalStaffTable[spell.Element]);
+  	 elseif (spell.Skill == 'Dark Magic') then
+ 	     gFunc.EquipSet(sets.Dark);
+	     gFunc.Equip('main', ElementalStaffTable[spell.Element]);
+ 	 end
+    elseif (sync.MainJobSync == 60) then
+   	 if (spell.Skill == 'Divine Magic') then
+    	     gFunc.EquipSet(sets.Nuke60);
+	     gFunc.Equip('main', ElementalStaffTable[spell.Element]);
+  	 elseif (spell.Skill == 'Elemental Magic') then
+   	     gFunc.EquipSet(sets.Nuke60);
 	     gFunc.Equip('main', ElementalStaffTable[spell.Element]);
   	 elseif (spell.Skill == 'Enfeebling Magic') then
   	     gFunc.EquipSet(sets.Enfeeb);

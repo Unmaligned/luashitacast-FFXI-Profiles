@@ -7,14 +7,15 @@ local sets = {
         Head = 'Koenig Schaller',
         Neck = 'Parade Gorget',
         Ear1 = 'Knight\'s Earring',
-        Ear2 = 'Merman\'s Earring',
-        Body = 'Adaman Cuirass',
-        Hands = 'Valor Gauntlets',
-        Ring1 = 'Phalanx Ring',
-        Ring2 = 'Jelly Ring',
+        Ear2 = 'Ethereal Earring',
+        Body = 'Valor Surcoat',
+        Hands = 'Vlr. Gauntlets +1',
+        Ring1 = 'Bloodbead Ring',
+        Ring2 = 'Sattva Ring',
+--        Ring2 = 'Jelly Ring',
         Back = 'Resentment Cape',
         Waist = 'Warwolf Belt',
-	Legs = 'Adaman Cuisses',
+        Legs = 'Koenig Diechlings',
         Feet = 'Gallant Leggings',
     },
     ['TP_Default'] = {
@@ -30,27 +31,30 @@ local sets = {
         Hands = 'Gallant Gauntlets',
         Legs = 'Valor Breeches',
     },
-    ['Sentinel'] = {
+    ['Enmity'] = {
         Head = 'Aegishjalmr',
+        Legs = 'Valor Breeches',
         Feet = 'Valor Leggings',
-    },
-    ['Rampart'] = {
-        Head = 'Valor Coronet',
+        Hands = 'Vlr. Gauntlets +1',
     },
     ['HPUP'] = {
         Ammo = 'Happy Egg',
         Neck = 'Shield Torque',
         Body = 'Gallant Surcoat',
         Ear2 = 'Cassie Earring',
-        Ring1 = 'Bomb Queen Ring',
-        Ring2 = 'Bloodbead Ring',
+        Ring2 = 'Bomb Queen Ring',
         Waist = 'Warrior\'s Belt +1',
-        Legs = 'Valor Breeches',
         Feet = 'Valor Leggings',
     },
     ['Refresh'] = {
         Head = '',
         Body = 'Royal Cloak',
+    },
+    ['HPLow'] = {
+        Ring1 = 'Hercules\' Ring',
+    },
+    ['NormalHP'] = {
+        Ring1 = 'Bloodbead Ring',
     },
 };
 
@@ -100,6 +104,7 @@ local TpVariantTable = {
 local Settings = {
     TpVariant = 1,
     IsRefreshOn = false,
+    HPlow = false,
 };
 
 -----------------------------------------------
@@ -127,8 +132,9 @@ profile.OnLoad = function()
 	end
 
     -- Register keybinds
-    AshitaCore:GetChatManager():QueueCommand(-1, '/bind F9 /lac fwd tpset');
+    AshitaCore:GetChatManager():QueueCommand(-1, '/bind F9 /lac fwd hp');
     AshitaCore:GetChatManager():QueueCommand(-1, '/bind F10 /lac fwd refresh');
+    AshitaCore:GetChatManager():QueueCommand(-1, '/bind F12 /lac fwd tpset');
 
     -- Output which set is currently enabled
     gFunc.Message('TP Set: ' .. TpVariantTable[Settings.TpVariant]);    
@@ -143,7 +149,7 @@ profile.OnUnload = function()
     -- Unregister keybinds
     AshitaCore:GetChatManager():QueueCommand(-1, '/unbind F9');
     AshitaCore:GetChatManager():QueueCommand(-1, '/unbind F10');
-
+    AshitaCore:GetChatManager():QueueCommand(-1, '/unbind F12');
 end
 
 -----------------------------------------------
@@ -180,6 +186,20 @@ profile.HandleCommand = function(args)
         end
 
     end
+
+    -- Catch the "hp" command
+    if (args[1] == "hp") then
+
+        -- Check if the refresh set is currently on
+        if (Settings.HpLow == true) then
+            Settings.HpLow = false;
+            gFunc.Message('HP Normal');    
+        else
+            Settings.HpLow = true;
+            gFunc.Message('HP Low');    
+        end
+
+    end
     
 end
 
@@ -191,6 +211,7 @@ profile.HandleDefault = function()
     -- Grab the player info
 	local player = gData.GetPlayer();
         local zone = gData.GetEnvironment('Area');
+
 
     -- Check if we're sub Ninja
 	if (player.SubJob == 'NIN') then
@@ -207,9 +228,15 @@ profile.HandleDefault = function()
         gFunc.EquipSet('TP_' .. TpVariantTable[Settings.TpVariant]);
     end
 
+
     -- Override with the refresh set
     if (Settings.IsRefreshOn == true) then
         gFunc.EquipSet(profile.Sets.Refresh);
+    end
+
+    -- Override with the HpLow set
+    if (Settings.HpLow == true) then
+        gFunc.EquipSet(profile.Sets.HPLow);
     end
 
     if (zone.Area == 'Port San d\'Oria') or (zone.Area == 'Southern San d\'Oria') or (zone.Area == 'Northern San d\'Oria') or (zone.Area == 'Chateau*') then
@@ -227,15 +254,16 @@ profile.HandleAbility = function()
     local action = gData.GetAction();
     
     -- Check if the action is Sentinel
-	if (action.Type == "Sentinel") then
-		gFunc.EquipSet(sets.Sentinel);
-
-    -- Check if the action is Rampart
-    	elseif (action.Type == "Rampart") then
-		gFunc.EquipSet(sets.Rampart);
-
+	if (action.Name == "Sentinel") then
+		gFunc.EquipSet(sets.Enmity);
 	end
-
+    -- Check if the action is Rampart
+    	if (action.Name == "Rampart") then
+		gFunc.EquipSet(sets.Enmity);
+	end
+	if (action.Name == "Provoke") then
+		gFunc.EquipSet(sets.Enmity);
+	end
 end
 
 -----------------------------------------------
@@ -261,6 +289,11 @@ profile.HandleMidcast = function()
     -- If the spell is Healing Magic
     if (spell.Skill == 'Healing Magic') then
         gFunc.EquipSet(sets.HPUP);
+    end
+
+    -- If the spell is Divine Magic
+    if (spell.Skill == 'Divine Magic') then
+        gFunc.EquipSet(sets.Enmity);
     end
 
 end

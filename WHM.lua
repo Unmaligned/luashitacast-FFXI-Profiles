@@ -7,11 +7,12 @@ local sets = {
         Neck = 'Ajari Necklace',
         Ear1 = 'Geist Earring',
         Ear2 = 'Moldavite Earring',
-        Body = 'Royal Cloak',
+        Head = 'Cleric\'s Cap',
+        Body = 'Noble\'s Tunic',
         Hands = 'Blessed Mitts',
         Ring1 = 'Serenity Ring',
         Ring2 = 'Serenity Ring',
-        Waist = 'Penitent\'s Rope',
+        Waist = 'Cleric\'s Belt',
         Legs = 'Blessed Trousers',
         Feet = 'Blessed Pumps',
         Back = 'Rainbow Cape',
@@ -51,7 +52,6 @@ local sets = {
 	Main = 'Pluto\'s Staff',
         Body = 'Errant Houppelande',
         Legs = 'Baron\'s Slops',
-        Waist = 'Hierarch Belt',
     },
     Resting65 = {
 	Main = 'Pluto\'s Staff',
@@ -79,6 +79,10 @@ local sets = {
         Hands = 'Chocobo Gloves',
         Legs = 'Chocobo Hose',
         Feet = 'Chocobo Boots',
+    },
+    ['Sandy'] = {
+        Head = 'Cleric\'s Cap',
+        Body = 'Kingdom Aketon',
     },
 };
 profile.Sets = sets;
@@ -183,8 +187,6 @@ profile.HandleDefault = function()
 
     if (Zone.Sandy[zone.Area]) then
 	gFunc.EquipSet(sets.Sandy);
-    elseif (Zone.City[zone.Area]) then
-	gFunc.EquipSet(sets.Town);
     end
 end
 
