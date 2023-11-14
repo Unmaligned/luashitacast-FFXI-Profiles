@@ -51,7 +51,7 @@ local sets = {
         Ring1 = "Tamas Ring",
     },
     Melee = {
-        Main = "Darksteel Maul"
+        Main = "Darksteel Maul",
 	Body = "Reverend Mail",
 	Hands = "Hlr. Mitts +1",
         Legs = "Blessed Trousers",
@@ -87,17 +87,15 @@ profile.HandleDefault = function()
 
     if (player.Status == "Engaged") then
         -- Melee set w/o staff change, keep that tp
-        gFunc.EquipSet(profile.sets.Melee)
+        gFunc.EquipSet(sets.Melee)
     elseif (player.Status == "Resting") then
         -- Resting set + Dark Staff
-        gFunc.EquipSet(profile.sets.Resting)
+        gFunc.EquipSet(sets.Resting)
         gFunc.Equip('main', ElementalStaffTable['Dark'])
-        end
     else
         -- Idle set + Apollo's Staff
         gFunc.EquipSet(sets.Idle)
         gFunc.Equip('main', ElementalStaffTable['Light'])
-        end
     end
 
 end
@@ -118,10 +116,10 @@ profile.HandleMidcast = function()
     elseif (spell.Skill == "Enhancing Magic") then
         if (spell.Name == "Stoneskin") then
             gFunc.EquipSet(sets.MND)
-	elseif (spell.Name == "Regen") then
+	elseif (spell.Name == "Regen" or "Regen II" or "Regen III") then
             gFunc.EquipSet(sets.Regen)
         else
-            gFunc.EquipSet(profile.sets.Enhancing)
+            gFunc.EquipSet(sets.Enhancing)
         end
     elseif (spell.Skill == "Healing Magic") then
         gFunc.EquipSet(sets.Healing)
