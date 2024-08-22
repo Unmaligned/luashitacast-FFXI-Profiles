@@ -92,6 +92,31 @@ profile.HandleItem = function()
 end
 
 profile.HandlePrecast = function()
+    local weather = gData.GetEnvironment();
+    local spell = gData.GetAction();
+    local target = gData.GetActionTarget();
+        if (string.contains(spell.Name, 'Elegy')) or (string.contains(spell.Name, 'Finale')) then
+            gFunc.EquipSet(sets.Wind);
+        end
+        if (string.contains(spell.Name, 'Requiem')) then
+            gFunc.EquipSet(sets.Requiem);
+        elseif (string.contains(spell.Name, 'Threnody')) then
+            gFunc.EquipSet(sets.Threnody);
+		elseif (string.contains(spell.Name, 'Horde Lullaby')) then
+            gFunc.EquipSet(sets.Horde);
+        elseif (string.contains(spell.Name, 'Foe Lullaby')) then
+            gFunc.EquipSet(sets.Foe);
+        elseif (string.contains(spell.Name, 'March')) then
+            gFunc.EquipSet(sets.March);
+        elseif (string.contains(spell.Name, 'Madrigal')) then
+            gFunc.EquipSet(sets.Madrigal);
+        elseif (string.contains(spell.Name, 'Ballad')) then
+            gFunc.EquipSet(sets.Ballad);
+        elseif (string.contains(spell.Name, 'Minne')) then
+            gFunc.EquipSet(sets.Minne);
+        elseif (string.contains(spell.Name, 'Minuet')) then
+            gFunc.EquipSet(sets.Minuet);
+        end
 end
 
 profile.HandleMidcast = function()
