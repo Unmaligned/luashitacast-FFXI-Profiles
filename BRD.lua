@@ -1,6 +1,6 @@
 local profile = {};
 local sets = {
-    ['Default'] = {
+    ['Idle'] = {
         Main = 'Ryl.Arc. Sword',
         Ammo = 'Orphic Egg',
         Head = 'Ryl.Ftm. Bandana',
@@ -16,6 +16,12 @@ local sets = {
         Legs = 'Slacks +1',
         Feet = 'Bounding Boots',
     },
+    ['TP_Default'] = {
+    },
+    ['Resting'] = {
+    },
+    ['Movement'] = {
+    },
     ['Wind'] = {
         Range = 'Flute +1',
     },
@@ -23,7 +29,7 @@ local sets = {
         Range = 'Flute +1',
     },
     ['Threnody'] = {
-        Range = 'Piccolo',
+        Range = 'Piccolo +1',
     },
     ['Horde'] = {
         Range = 'Flute +1',
@@ -63,6 +69,20 @@ profile.HandleCommand = function(args)
 end
 
 profile.HandleDefault = function()
+    gFunc.EquipSet(sets.Idle);
+	
+	local player = gData.GetPlayer();
+    if (player.Status == 'Engaged') then
+        gFunc.EquipSet(sets.Tp_Default)
+        if (gcdisplay.GetCycle('MeleeSet') ~= 'Default') then
+			gFunc.EquipSet('Tp_' .. gcdisplay.GetCycle('MeleeSet')) end
+		if (gcdisplay.GetToggle('TH') == true) then gFunc.EquipSet(sets.TH) end
+        if (gcdisplay.GetToggle('Fight') == false) then AshitaCore:GetChatManager():QueueCommand(1, '/fight') end
+    elseif (player.Status == 'Resting') then
+        gFunc.EquipSet(sets.Resting);
+    elseif (player.IsMoving == true) then
+		gFunc.EquipSet(sets.Movement);
+    end
 end
 
 profile.HandleAbility = function()
