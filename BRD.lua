@@ -2,7 +2,7 @@ local profile = {};
 local sets = {
     ['Idle'] = {
         Main = 'Ryl.Arc. Sword',
-        Ammo = 'Orphic Egg',
+        Range = 'Flute +1',
         Head = 'Ryl.Ftm. Bandana',
         Neck = 'Justice Badge',
         Ear1 = 'Energy Earring',
@@ -35,7 +35,7 @@ local sets = {
         Range = 'Flute +1',
     },
     ['Foe'] = {
-        Range = 'Flute +1',
+        Range = 'Mary\'s Horn',
     },
     ['March'] = {
         Range = 'Flute +1',
