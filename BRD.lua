@@ -1,19 +1,19 @@
 local profile = {};
 local sets = {
     ['Idle'] = {
-        Main = 'Ryl.Arc. Sword',
+        Main = 'Brass Xiphos +1',
         Range = 'Flute +1',
         Head = 'Ryl.Ftm. Bandana',
         Neck = 'Justice Badge',
-        Ear1 = 'Energy Earring',
-        Ear2 = 'Energy Earring',
+        Ear1 = 'Cassie Earring',
+        Ear2 = 'Optical Earring',
         Body = 'Lgn. Harness',
         Hands = 'Ryl.Ftm. Gloves',
         Ring1 = 'San d\'Orian Ring',
-        Ring2 = 'Windurstian Ring',
+        Ring2 = 'Courage Ring',
         Back = 'Cape',
-        Waist = 'Leather Belt',
-        Legs = 'Slacks +1',
+        Waist = 'Friar\'s Rope',
+        Legs = 'Brass Subligar',
         Feet = 'Bounding Boots',
     },
     ['TP_Default'] = {
@@ -27,30 +27,76 @@ local sets = {
     },
 	['Requiem'] = {
         Range = 'Flute +1',
+        Head = 'Noble\'s Ribbon',
+        Ring1 = 'Hope Ring',
+        Ring2 = 'Hope Ring',
     },
     ['Threnody'] = {
         Range = 'Piccolo +1',
+        Head = 'Noble\'s Ribbon',
+        Ring1 = 'Hope Ring',
+        Ring2 = 'Hope Ring',
     },
     ['Horde'] = {
         Range = 'Flute +1',
+        Head = 'Noble\'s Ribbon',
+        Ring1 = 'Hope Ring',
+        Ring2 = 'Hope Ring',
     },
     ['Foe'] = {
         Range = 'Mary\'s Horn',
+        Head = 'Noble\'s Ribbon',
+        Ring1 = 'Hope Ring',
+        Ring2 = 'Hope Ring',
     },
     ['March'] = {
         Range = 'Flute +1',
+        Head = 'Noble\'s Ribbon',
+        Ring1 = 'Hope Ring',
+        Ring2 = 'Hope Ring',
     },
     ['Madrigal'] = {
         Range = 'Flute +1',
+        Head = 'Noble\'s Ribbon',
+        Ring1 = 'Hope Ring',
+        Ring2 = 'Hope Ring',
     },
     ['Ballad'] = {
         Range = 'Flute +1',
+        Head = 'Noble\'s Ribbon',
+        Ring1 = 'Hope Ring',
+        Ring2 = 'Hope Ring',
     },
     ['Minne'] = {
         Range = 'Maple Harp +1',
+        Head = 'Noble\'s Ribbon',
+        Ring1 = 'Hope Ring',
+        Ring2 = 'Hope Ring',
     },
     ['Minuet'] = {
         Range = 'Cornette +1',
+        Head = 'Noble\'s Ribbon',
+        Ring1 = 'Hope Ring',
+        Ring2 = 'Hope Ring',
+    },
+    ['Town'] = {
+    },
+    ['Sandy'] = {
+        Body = 'Kingdom Aketon',
+    },
+    ['Windy'] = {
+        Body = 'Federation Aketon',
+    },
+    ['Bastok'] = {
+        Body = 'Republic Aketon',
+    },
+    ['Fish'] = {
+        Body = 'Fsh. Tunica',
+        Hands = 'Fsh. Gloves',
+        Legs = 'Fisherman\'s Hose',
+        Feet = 'Fisherman\'s Boots',
+        Range = 'Halcyon Rod',
+        Ammo = 'Minnow',
     },
 };
 profile.Sets = sets;
@@ -58,30 +104,125 @@ profile.Sets = sets;
 profile.Packer = {
 };
 
+-- Zone table(s)
+local Zone = {};
+
+-- San d'Oria Zones
+Zone.Sandy = {
+    ['Port San d\'Oria'] = true,
+    ['Southern San d\'Oria'] = true,
+    ['Northern San d\'Oria'] = true,
+    ['Chateau d\'Oraguille'] = true,
+}
+
+-- Windurst Zones
+Zone.Windy = {
+    ['Windurst*'] = true,
+    ['Heavens*'] = true,
+}
+
+-- Bastok Zones
+Zone.Bastok = {
+    ['Bastok*'] = true,
+    ['Metalworks'] = true,
+    ['Port Bastok'] = true,
+}
+
+Zone.City = {
+    ['Port Jeuno'] = true,
+    ['Lower Jeuno'] = true,
+    ['Upper Jeuno'] = true,
+    ['Ru\'Lude Gardens'] = true,
+    ['*Whitegate'] = true,
+    ['Nashmau'] = true,
+    ['Kazham'] = true,
+    ['Norg'] = true,
+    ['Rabao'] = true,
+}
+
+-----------------------------------------------
+-- Global settings
+-----------------------------------------------
+local Settings = {
+    IsRefreshOn = false,
+    IsFishOn = false,
+};
+
 profile.OnLoad = function()
+    -- Required
     gSettings.AllowAddSet = true;
+
+    -- Grab the player info
+	local player = gData.GetPlayer();
+
+    AshitaCore:GetChatManager():QueueCommand(1, '/macro book 10');
+    AshitaCore:GetChatManager():QueueCommand(1, '/macro set 1');
+
+    -- Register keybinds
+    AshitaCore:GetChatManager():QueueCommand(-1, '/bind F10 /lac fwd refresh');
+    AshitaCore:GetChatManager():QueueCommand(-1, '/bind F9 /lac fwd fish');
+
 end
 
 profile.OnUnload = function()
 end
 
 profile.HandleCommand = function(args)
+
+    -- Catch the "refresh" command
+    if (args[1] == "refresh") then
+
+        -- Check if the refresh set is currently on
+        if (Settings.IsRefreshOn == true) then
+            Settings.IsRefreshOn = false;
+            gFunc.Message('Refresh Set: OFF');    
+        else
+            Settings.IsRefreshOn = true;
+            gFunc.Message('Refresh Set: ON');    
+        end
+
+    end
+
+    -- Catch the "fish" command
+    if (args[1] == "fish") then
+
+        -- Check if the fish set is currently on
+        if (Settings.IsFishOn == true) then
+            Settings.IsFishOn = false;
+            gFunc.Message('Fish Set: OFF');    
+        else
+            Settings.IsFishOn = true;
+            gFunc.Message('Fish Set: ON');    
+        end
+
+    end
 end
 
 profile.HandleDefault = function()
+    local player = gData.GetPlayer();
+    local sync = gData.GetPlayer(MainJobSync);
+    local zone = gData.GetEnvironment('Area');
+
     gFunc.EquipSet(sets.Idle);
-	
-	local player = gData.GetPlayer();
-    if (player.Status == 'Engaged') then
-        gFunc.EquipSet(sets.Tp_Default)
-        if (gcdisplay.GetCycle('MeleeSet') ~= 'Default') then
-			gFunc.EquipSet('Tp_' .. gcdisplay.GetCycle('MeleeSet')) end
-		if (gcdisplay.GetToggle('TH') == true) then gFunc.EquipSet(sets.TH) end
-        if (gcdisplay.GetToggle('Fight') == false) then AshitaCore:GetChatManager():QueueCommand(1, '/fight') end
-    elseif (player.Status == 'Resting') then
-        gFunc.EquipSet(sets.Resting);
-    elseif (player.IsMoving == true) then
-		gFunc.EquipSet(sets.Movement);
+
+    -- Override with the refresh set
+    if (Settings.IsRefreshOn == true) then
+        gFunc.EquipSet(profile.Sets.Refresh);
+    end
+
+    -- Override with the fish set
+    if (Settings.IsFishOn == true) then
+        gFunc.EquipSet(profile.Sets.Fish);
+    end
+
+    if (Zone.Sandy[zone.Area]) then
+	gFunc.EquipSet(sets.Sandy);
+    elseif (Zone.Windy[zone.Area]) then
+	gFunc.EquipSet(sets.Windy);
+    elseif (Zone.Bastok[zone.Area]) then
+	gFunc.EquipSet(sets.Bastok);
+    elseif (Zone.City[zone.Area]) then
+	gFunc.EquipSet(sets.Town);
     end
 end
 
