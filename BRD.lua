@@ -1,83 +1,101 @@
 local profile = {};
 local sets = {
     ['Idle'] = {
-        Main = 'Brass Xiphos +1',
-        Range = 'Flute +1',
-        Head = 'Ryl.Ftm. Bandana',
-        Neck = 'Justice Badge',
+        Main = 'Centurion\'s Sword',
+	Sub = 'Varlet\'s Targe',
+        Range = 'Ryl.Spr. Horn',
+        Head = 'Mrc.Cpt. Headgear',
+        Neck = 'Holy Phial',
         Ear1 = 'Cassie Earring',
         Ear2 = 'Optical Earring',
-        Body = 'Lgn. Harness',
-        Hands = 'Ryl.Ftm. Gloves',
-        Ring1 = 'San d\'Orian Ring',
-        Ring2 = 'Courage Ring',
-        Back = 'Cape',
-        Waist = 'Friar\'s Rope',
-        Legs = 'Brass Subligar',
-        Feet = 'Bounding Boots',
+        Body = 'Mrc.Cpt. Doublet',
+        Hands = 'Savage Gauntlets',
+        Ring1 = 'Sattva Ring',
+        Ring2 = 'Stamina Ring',
+        Back = 'Wolf Mantle +1',
+        Waist = 'Warrior\'s Belt +1',
+        Legs = 'Kingdom Trousers',
+        Feet = 'Savage Gaiters',
     },
     ['TP_Default'] = {
     },
     ['Resting'] = {
+        Legs = 'Baron\'s Slops',
     },
     ['Movement'] = {
     },
     ['Wind'] = {
-        Range = 'Flute +1',
+        Range = 'Ryl.Spr. Horn',
     },
-	['Requiem'] = {
-        Range = 'Flute +1',
+    ['Requiem'] = {
+        Range = 'Siren Flute',
         Head = 'Noble\'s Ribbon',
         Ring1 = 'Hope Ring',
         Ring2 = 'Hope Ring',
+        Neck = 'Bird Whistle',
+    },
+    ['Paeon'] = {
+        Range = 'Harp +1',
+        Head = 'Noble\'s Ribbon',
+        Ring1 = 'Hope Ring',
+        Ring2 = 'Hope Ring',
+        Neck = 'Bird Whistle',
     },
     ['Threnody'] = {
         Range = 'Piccolo +1',
         Head = 'Noble\'s Ribbon',
         Ring1 = 'Hope Ring',
         Ring2 = 'Hope Ring',
+        Neck = 'Bird Whistle',
     },
     ['Horde'] = {
-        Range = 'Flute +1',
+        Range = 'Mary\'s Horn',
         Head = 'Noble\'s Ribbon',
         Ring1 = 'Hope Ring',
         Ring2 = 'Hope Ring',
+        Neck = 'Bird Whistle',
     },
     ['Foe'] = {
         Range = 'Mary\'s Horn',
         Head = 'Noble\'s Ribbon',
         Ring1 = 'Hope Ring',
         Ring2 = 'Hope Ring',
+        Neck = 'Bird Whistle',
     },
     ['March'] = {
-        Range = 'Flute +1',
+        Range = 'Ryl.Spr. Horn',
         Head = 'Noble\'s Ribbon',
         Ring1 = 'Hope Ring',
         Ring2 = 'Hope Ring',
+        Neck = 'Bird Whistle',
     },
     ['Madrigal'] = {
-        Range = 'Flute +1',
+        Range = 'Ryl.Spr. Horn',
         Head = 'Noble\'s Ribbon',
         Ring1 = 'Hope Ring',
         Ring2 = 'Hope Ring',
+        Neck = 'Bird Whistle',
     },
     ['Ballad'] = {
-        Range = 'Flute +1',
+        Range = 'Ryl.Spr. Horn',
         Head = 'Noble\'s Ribbon',
         Ring1 = 'Hope Ring',
         Ring2 = 'Hope Ring',
+        Neck = 'Bird Whistle',
     },
     ['Minne'] = {
-        Range = 'Maple Harp +1',
+        Range = 'Harp +1',
         Head = 'Noble\'s Ribbon',
         Ring1 = 'Hope Ring',
         Ring2 = 'Hope Ring',
+        Neck = 'Bird Whistle',
     },
     ['Minuet'] = {
         Range = 'Cornette +1',
         Head = 'Noble\'s Ribbon',
         Ring1 = 'Hope Ring',
         Ring2 = 'Hope Ring',
+        Neck = 'Bird Whistle',
     },
     ['Town'] = {
     },
@@ -117,8 +135,11 @@ Zone.Sandy = {
 
 -- Windurst Zones
 Zone.Windy = {
-    ['Windurst*'] = true,
-    ['Heavens*'] = true,
+    ['Windurst Walls'] = true,
+    ['Windurst Waters'] = true,
+    ['Windurst Woods'] = true, 
+    ['Port Windurst'] = true, 
+    ['Heavens Tower'] = true,
 }
 
 -- Bastok Zones
@@ -203,7 +224,28 @@ profile.HandleDefault = function()
     local sync = gData.GetPlayer(MainJobSync);
     local zone = gData.GetEnvironment('Area');
 
-    gFunc.EquipSet(sets.Idle);
+   gFunc.EquipSet(sets.Idle);
+
+
+    if (player.Status == 'Engaged') then
+        gFunc.EquipSet(sets.Tp_Default);
+    elseif (player.Status == 'Resting') then
+        gFunc.EquipSet(sets.Resting);
+    elseif (player.IsMoving == true) then
+	gFunc.EquipSet(sets.Movement);
+    end
+    
+    if (Zone.Sandy[zone.Area]) then
+	gFunc.EquipSet(sets.Sandy);
+    elseif (Zone.Windy[zone.Area]) then
+	gFunc.EquipSet(sets.Windy);
+    elseif (Zone.Bastok[zone.Area]) then
+	gFunc.EquipSet(sets.Bastok);
+    elseif (Zone.City[zone.Area]) then
+	gFunc.EquipSet(sets.Town);
+    end
+
+
 
     -- Override with the refresh set
     if (Settings.IsRefreshOn == true) then
@@ -215,15 +257,6 @@ profile.HandleDefault = function()
         gFunc.EquipSet(profile.Sets.Fish);
     end
 
-    if (Zone.Sandy[zone.Area]) then
-	gFunc.EquipSet(sets.Sandy);
-    elseif (Zone.Windy[zone.Area]) then
-	gFunc.EquipSet(sets.Windy);
-    elseif (Zone.Bastok[zone.Area]) then
-	gFunc.EquipSet(sets.Bastok);
-    elseif (Zone.City[zone.Area]) then
-	gFunc.EquipSet(sets.Town);
-    end
 end
 
 profile.HandleAbility = function()
@@ -243,12 +276,14 @@ profile.HandlePrecast = function()
             gFunc.EquipSet(sets.Requiem);
         elseif (string.contains(spell.Name, 'Threnody')) then
             gFunc.EquipSet(sets.Threnody);
-		elseif (string.contains(spell.Name, 'Horde Lullaby')) then
+	elseif (string.contains(spell.Name, 'Horde Lullaby')) then
             gFunc.EquipSet(sets.Horde);
         elseif (string.contains(spell.Name, 'Foe Lullaby')) then
             gFunc.EquipSet(sets.Foe);
         elseif (string.contains(spell.Name, 'March')) then
             gFunc.EquipSet(sets.March);
+        elseif (string.contains(spell.Name, 'Paeon')) then
+            gFunc.EquipSet(sets.Paeon);
         elseif (string.contains(spell.Name, 'Madrigal')) then
             gFunc.EquipSet(sets.Madrigal);
         elseif (string.contains(spell.Name, 'Ballad')) then
@@ -277,6 +312,8 @@ profile.HandleMidcast = function()
             gFunc.EquipSet(sets.Foe);
         elseif (string.contains(spell.Name, 'March')) then
             gFunc.EquipSet(sets.March);
+        elseif (string.contains(spell.Name, 'Paeon')) then
+            gFunc.EquipSet(sets.Paeon);
         elseif (string.contains(spell.Name, 'Madrigal')) then
             gFunc.EquipSet(sets.Madrigal);
         elseif (string.contains(spell.Name, 'Ballad')) then
